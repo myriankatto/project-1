@@ -7,17 +7,13 @@ body {
 }
 
 
-div {
- margin-left: 53%;
-
-}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(35, 211, 196);
+  background-color: rgb(71, 7, 114);
 }
 
-/* canvas {
-  background-color: rgb(223, 163, 163);
-} */
+canvas {
+  background-color: rgb(39, 39, 39);
+}
