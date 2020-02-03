@@ -3,6 +3,9 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: monospace;
+  color: white;
+
 
 }
 
@@ -11,9 +14,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(71, 7, 114);
+  background-color: rgb(35, 0, 58);
 }
 
 canvas {
   background-color: rgb(39, 39, 39);
 }
+
