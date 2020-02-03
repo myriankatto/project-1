@@ -21,3 +21,15 @@ canvas {
   background-color: rgb(39, 39, 39);
 }
 
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 15px;;
+}
+
+h2 {
+  font-size: 15px;;
+}

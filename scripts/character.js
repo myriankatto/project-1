@@ -5,10 +5,13 @@ class Character {
   constructor(game) {
     this.game = game;
 
-    this.positionX = 0;
-    this.positionY = 0;
-    this.width = 112;
-    this.height = 88;
+    this.positionX = 300;
+    this.positionY = 40;
+    this.width = 92;
+    this.height = 73;
+
+
+    this.gravity = 1.2;
 
     this.setKeyboardEventListeners();
   }
@@ -16,23 +19,25 @@ class Character {
   setKeyboardEventListeners() {
     window.addEventListener('keydown', event => {
       switch (event.keyCode) {
-        case 37:
-          this.positionX -= 10;
+        // case 37:
+        //   this.positionX -= 10;
+        //   break;
+        // case 39:
+        //   this.positionX += 10;
+        //   break;
+        case 32:
+          this.positionY -= 20;
           break;
-        case 39:
-          this.positionX += 10;
-          break;
-        case 38:
-          this.positionY -= 10;
-          break;
-        case 40:
-          this.positionY += 10;
-          break;
+        // case 40:
+        //   this.positionY += 10;
+        //   break;
       }
     });
   }
 
-  runLogic() {}
+  runLogic() {
+    this.positionY += this.gravity;
+  }
 
   draw() {
     this.game.context.save();
