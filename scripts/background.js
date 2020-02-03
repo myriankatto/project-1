@@ -1,5 +1,5 @@
 const backgroundImage = new Image();
-backgroundImage.src = './images/background.png';
+backgroundImage.src = './images/background.jpg';
 
 class Background {
   constructor (game){
@@ -12,11 +12,11 @@ class Background {
     
     const width = $canvas.width;
     const height = $canvas.height;
-    // const distance = this.game.player.position.x;
         
-    backgroundImage.addEventListener('load', () => {
+      context.save();
       context.drawImage(backgroundImage, 0, 0, width, height);
-    });
+
+      context.restore();
   }  
 
 };  
