@@ -4,7 +4,7 @@ heartImage.src = './images/heart.png';
 class Prize {
   constructor(game, positionY) {
     this.game = game;
-    this.positionX = this.game.$canvas.width;
+    this.positionX = this.game.$canvas.width + 100;
     this.positionY = positionY;
     this.width = 20;
     this.height = 20;

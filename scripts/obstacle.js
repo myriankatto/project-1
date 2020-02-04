@@ -2,13 +2,15 @@ const salmonImage = new Image();
 salmonImage.src = './images/salmon.png';
 
 class Obstacle {
-  constructor(game, positionY) {
+  constructor(game, positionY, prize) {
     this.game = game;
     this.positionX = this.game.$canvas.width;
     this.positionY = positionY;
     this.width = 30;
     this.height = 40;
     this.speed = 3;
+
+    this.prize = prize;
 
     this.setRandomPosition();
   }
@@ -19,7 +21,6 @@ class Obstacle {
 
   runLogic() {
     this.positionX -= this.speed;
-    // this.checkCollision();
   }
 
   draw() {
@@ -56,15 +57,3 @@ class Obstacle {
     }
   }
 }
-
-// class Scoreboard {
-//   constructor (obstacle) {
-//     this.obstacle = obstacle;
-
-//     this.$scoreSpan = document.querySelector('h1 span');
-//   }
-
-//   paint () {
-//     this.$scoreSpan.innerText = collisionCount;
-//   }
-// }

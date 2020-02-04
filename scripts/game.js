@@ -5,6 +5,7 @@ class Game {
     this.$canvas = $canvas;
     this.$canvas.height = $canvas.height;
     this.$canvas.width = $canvas.width;
+    this.context = this.$canvas.getContext('2d');
 
     this.character = new Character(this);
     this.character.setKeyboardEventListeners();
@@ -19,12 +20,9 @@ class Game {
     this.salmonObstacles = [];
     this.heartPrizes = [];
 
-    this.context = this.$canvas.getContext('2d');
-
     this.background = new Background(this);
 
     this.scoreBoard = new Scoreboard(this);
-
   }
 
   start() {
@@ -48,7 +46,7 @@ class Game {
 
     if (this.timer2 < timestamp - this.speedLevel) {
       this.timer2 = timestamp;
-      this.speedLevel -= 7000;
+      this.speedLevel -= 2000;
     }
 
     this.character.runLogic();
@@ -57,6 +55,8 @@ class Game {
   }
 
   runLogic() {
+    this.background.runLogic();
+
     //this controls the logic of each obstacle
     for (let i = 0; i < this.salmonObstacles.length; i++) {
       if (this.salmonObstacles[i].checkCollision()) {
@@ -72,20 +72,20 @@ class Game {
     for (let i = 0; i < this.heartPrizes.length; i++) {
       if (this.heartPrizes[i].checkCollision()) {
         this.heartPrizes.splice(i, 1);
-
         this.prizeCollisionCount += 1;
         console.log(this.prizeCollisionCount);
       }
       this.heartPrizes[i].runLogic();
     }
 
+
   }
-  
+
   clear() {
     const { width, height } = this.$canvas;
     this.context.clearRect(0, 0, width, height);
   }
-  
+
   paint() {
     this.clear();
     this.background.paint();
@@ -99,8 +99,5 @@ class Game {
     }
 
     this.scoreBoard.paint();
-
   }
 }
-
-

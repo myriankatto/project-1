@@ -1,5 +1,9 @@
 const characterImage = new Image();
-characterImage.src = './images/wasabi-stand.png';
+characterImage.src = './images/wasabi-sprite.png';
+
+let counter = 0;
+let frame_width = 114;
+let frame_height = 88;
 
 class Character {
   constructor(game) {
@@ -10,7 +14,6 @@ class Character {
     this.width = 92;
     this.height = 73;
 
-
     this.gravity = 1.2;
 
     this.setKeyboardEventListeners();
@@ -19,18 +22,15 @@ class Character {
   setKeyboardEventListeners() {
     window.addEventListener('keydown', event => {
       switch (event.keyCode) {
-        // case 37:
-        //   this.positionX -= 10;
-        //   break;
-        // case 39:
-        //   this.positionX += 10;
-        //   break;
         case 32:
-          this.positionY -= 20;
-          break;
-        // case 40:
-        //   this.positionY += 10;
-        //   break;
+          if (this.positionY < 0) {
+            this.positionY = -this.positionY;
+            // } else if (this.positionY + this.height > 471) {
+            //   console.log('game over');
+          } else {
+            this.positionY -= 20;
+            break;
+          }
       }
     });
   }
@@ -40,7 +40,7 @@ class Character {
   }
 
   draw() {
-    this.game.context.save();
+    // this.game.context.save();
     // ---- COLLITION DEBUGGIN RECTANGLE
     // this.game.context.fillRect(this.width, this.height, this.positionX, this.positionY);
     // this.game.context.fillRect(
@@ -50,13 +50,30 @@ class Character {
     //   this.height - 25
     // );
 
+    // this.game.context.drawImage(
+    //   characterImage,
+    //   this.positionX,
+    //   this.positionY,
+    //   this.width,
+    //   this.height
+    // );
+
+
+    let frame = Math.floor(counter % 4);
     this.game.context.drawImage(
       characterImage,
+      frame * frame_width,
+      0,
+      frame_width,
+      frame_height,
       this.positionX,
       this.positionY,
       this.width,
       this.height
     );
-    this.game.context.restore();
+    counter = counter + 0.1;
+    // this.game.context.restore();
   }
+
+
 }

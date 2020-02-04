@@ -5,14 +5,26 @@
     <meta name="viewport" content="width=device-width" />
     <title>Wasabi</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323&display=swap&subset=latin-ext"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div>
-      <canvas width="750" height="471"></canvas>
+    <section>
+      <div id="score">
+        <h1>Salmons:<span>0</span></h1>
+        <h2>Hearts:<span>0</span></h2>
+      </div>
+      <div id="canvas">
+        <canvas width="750" height="471"></canvas>
+      </div>
 
-      <h1>Salmons:<span>0</span></h1>
-      <h2>Hearts:<span>0</span></h2>
-    </div>
+      <div id="btn">
+        <img id="btn-play" src="./images/btn-play.png" alt="play button" />
+        <img id="btn-pause" src="./images/btn-pause.png" alt="pause button" />
+      </div>
+    </section>
 
     <script src="./scripts/obstacle.js"></script>
     <script src="./scripts/prize.js"></script>
