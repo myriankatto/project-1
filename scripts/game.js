@@ -4,43 +4,38 @@ class Game {
     this.$canvas.height = $canvas.height;
     this.$canvas.width = $canvas.width;
     this.context = this.$canvas.getContext('2d');
+    this.isRunning = false;
 
     this.character = new Character(this);
     this.character.setKeyboardEventListeners();
-
-    this.timer = 0;
-    this.speed = 1000;
-    this.speedLevel = 2000;
-
-    this.obstacleCollisionCount = 0;
-    this.prizeCollisionCount = 0;
-
-    this.salmonObstacles = [];
-    this.heartPrizes = [];
-
-    this.background = new Background(this);
-
-    this.scoreBoard = new Scoreboard(this);
 
     this.setControlBindings();
   }
 
   setControlBindings() {
-    const $buttonStart = document.getElementById('btn-play');
-    const $buttonPause = document.getElementById('btn-pause');
     const $buttonNewGame = document.getElementById('btn-newgame');
+    const $buttonPause = document.getElementById('btn-playpause');
 
-    $buttonStart.addEventListener('click', () => {
+    $buttonNewGame.addEventListener('click', () => {
       this.start();
     });
 
     $buttonPause.addEventListener('click', () => {
       this.togglePause();
+      // if (this.isRunning) {
+      //   let pauseImgSrc = document.getElementById('btn-pause').src;
+      //   let srcPauseSubstring = pauseImgSrc.substring(0, pauseImgSrc.length - 13);
+      //   document.getElementById('btn-pause').src = srcPauseSubstring + 'btn-play1.png';
+      // } else if (!this.isRunning) {
+      //   let playImgSrc = document.getElementById('btn-play1').src;
+      //   let srcPlaySubstring = playImgSrc.substring(0, playImgSrc.length - 13);
+      //   document.getElementById('btn-play1').src = srcPlaySubstring + 'btn-pause.png';
+      // }
     });
 
-    $buttonNewGame.addEventListener('click', () => {
-      this.reset();
-    });
+    // $buttonNewGame.addEventListener('click', () => {
+    //   this.reset();
+    // });
   }
 
   runLogic(timestamp) {
@@ -119,24 +114,33 @@ class Game {
 
   togglePause() {
     this.isRunning = !this.isRunning;
-  }
-
-  start() {
-    this.isRunning = true;
     this.loop();
   }
 
-  reset() {
+  start() {
     this.character = new Character(this);
     this.background = new Background(this);
     this.scoreBoard = new Scoreboard(this);
-    this.start();
+
+    this.obstacleCollisionCount = 0;
+    this.prizeCollisionCount = 0;
+
+    this.timer = 0;
+    this.speed = 1000;
+    this.speedLevel = 2000;
+
+    this.salmonObstacles = [];
+    this.heartPrizes = [];
+
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.loop();
+    }
   }
 
   loop(timestamp) {
     this.runLogic(timestamp);
     this.paint();
-
     if (this.isRunning) {
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }

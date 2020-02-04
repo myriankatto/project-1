@@ -1,5 +1,9 @@
 const salmonImage = new Image();
-salmonImage.src = './images/salmon.png';
+salmonImage.src = './images/salmon-sprite.png';
+
+let salmonCounter = 0;
+let salmon_frame_width = 300;
+let salmon_frame_height = 225;
 
 class Obstacle {
   constructor(game, positionY, prize) {
@@ -24,15 +28,28 @@ class Obstacle {
   }
 
   draw() {
-    this.game.context.save();
+    // this.game.context.save();
+    // this.game.context.drawImage(
+    //   salmonImage,
+    //   this.positionX,
+    //   this.positionY,
+    //   this.width,
+    //   this.height
+    // );
+    // this.game.context.restore();
+    let frame = Math.floor(salmonCounter % 4);
     this.game.context.drawImage(
       salmonImage,
+      frame * salmon_frame_width,
+      0,
+      salmon_frame_width,
+      salmon_frame_height,
       this.positionX,
       this.positionY,
       this.width,
       this.height
     );
-    this.game.context.restore();
+    salmonCounter = salmonCounter + 0.005;
   }
 
   checkCollision() {

@@ -1,5 +1,9 @@
 const heartImage = new Image();
-heartImage.src = './images/heart.png';
+heartImage.src = './images/heart-sprite.png';
+
+let heartCounter = 0;
+let heart_frame_width = 35;
+let heart_frame_height = 35;
 
 class Prize {
   constructor(game, positionY) {
@@ -22,15 +26,28 @@ class Prize {
   }
 
   draw() {
-    this.game.context.save();
+    // this.game.context.save();
+    // this.game.context.drawImage(
+    //   heartImage,
+    //   this.positionX,
+    //   this.positionY,
+    //   this.width,
+    //   this.height
+    // );
+    // this.game.context.restore();
+    let frame = Math.floor(heartCounter % 2);
     this.game.context.drawImage(
       heartImage,
+      frame * heart_frame_width,
+      0,
+      heart_frame_width,
+      heart_frame_height,
       this.positionX,
       this.positionY,
       this.width,
       this.height
     );
-    this.game.context.restore();
+    heartCounter = heartCounter + 0.02;
   }
 
   checkCollision() {
