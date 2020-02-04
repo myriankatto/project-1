@@ -52,7 +52,7 @@ class Obstacle {
       characterPositionY + characterHeight > obstaclePositionY &&
       characterPositionY < obstaclePositionY + obstacleHeight
     ) {
-      console.log('collision');
+      // console.log('collision');
       return true;
     }
   }

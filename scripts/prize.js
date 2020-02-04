@@ -50,7 +50,7 @@ class Prize {
       characterPositionY + characterHeight > prizePositionY &&
       characterPositionY < prizePositionY + prizeHeight
     ) {
-      console.log('collision');
+      // console.log('collision');
       return true;
     }
   }

@@ -25,13 +25,10 @@ body {
 }
 
 canvas {
-  background-color: rgb(39, 39, 39);
+  background-color: rgb(46, 1, 58);
 }
 
 h1 {
   font-size: 20px;
 }
 
-h2 {
-  font-size: 20px;
-}

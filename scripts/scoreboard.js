@@ -2,8 +2,8 @@ class Scoreboard {
   constructor(game) {
     this.game = game;
 
-    this.$salmonScoreSpan = document.querySelector('div h1 span');
-    this.$heartScoreSpan = document.querySelector('div h2 span');
+    this.$salmonScoreSpan = document.getElementById('salmon-score');
+    this.$heartScoreSpan = document.getElementById('heart-score');
 
   }
 
