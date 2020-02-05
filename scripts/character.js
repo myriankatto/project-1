@@ -1,12 +1,13 @@
 const characterImage = new Image();
 characterImage.src = './images/wasabi-sprite.png';
 
-const characterTrailImage = new Image();
-characterTrailImage.src = './images/wasabi-trail.png';
+// const characterTrailImage = new Image();
+// characterTrailImage.src = './images/trail.png';
 
 class Character {
-  constructor(game) {
+  constructor(game, background) {
     this.game = game;
+    this.background = background;
 
     this.positionX = 300;
     this.positionY = 40;
@@ -19,7 +20,7 @@ class Character {
     this.frame_width = 114;
     this.frame_height = 88;
 
-    this.motionTrailLength = 7;
+    this.motionTrailLength = 60;
     this.positions = [];
 
     this.setKeyboardEventListeners();
@@ -44,15 +45,11 @@ class Character {
   }
 
   draw() {
-    for (var i = 0; i < this.positions.length; i++) {
-      this.game.context.drawImage(
-        characterTrailImage,
-        this.positionX,
-        this.positions[i].y,
-        this.width,
-        this.height
-      );
-    }
+    // for (var i = 0; i < this.positions.length; i++) {
+    //   this.game.context.drawImage(characterTrailImage, this.positions[i].x , this.positions[i].y + 75, this.width, 40);
+
+    // }
+    // this.storeLastPosition(this.positionX, this.positionY);
 
     let frame = Math.floor(this.counter % 4);
     this.game.context.drawImage(
@@ -68,15 +65,18 @@ class Character {
     );
     this.counter = this.counter + 0.1;
 
-    this.storeLastPosition(this.positionY);
   }
-  storeLastPosition() {
-    // push an item
-    this.positions.push({ y: this.positionY });
 
-    //get rid of first item
-    if (this.positions.length > this.motionTrailLength) {
-      this.positions.shift();
-    }
-  }
+  // storeLastPosition() {
+  //   // push an item
+  //   this.positions.push({
+  //     x: this.positionX,
+  //     y: this.positionY
+  //   });
+
+  //   //get rid of first item
+  //   if (this.positions.length > this.motionTrailLength) {
+  //     this.positions.shift();
+  //   }
+  // }
 }

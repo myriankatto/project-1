@@ -106,6 +106,7 @@ class Game {
     this.clear();
     this.background.paint();
     this.character.draw();
+    // this.character.storeLastPosition();
 
     for (let i = 0; i < this.salmonObstacles.length; i++) {
       this.salmonObstacles[i].draw();
@@ -152,7 +153,7 @@ class Game {
   loop(timestamp) {
     this.runLogic(timestamp);
     this.paint();
-    this.character.storeLastPosition();
+
     if (this.isRunning) {
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }

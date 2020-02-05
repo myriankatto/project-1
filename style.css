@@ -27,6 +27,7 @@ section {
 #btn {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
 body {
@@ -37,7 +38,7 @@ body {
 }
 
 canvas {
-  background-color: rgb(46, 1, 58);
+  background-image: url('./images/screen1.png');
 }
 
 h1 {

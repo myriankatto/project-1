@@ -1,7 +1,3 @@
-const backgroundImage = new Image();
-backgroundImage.src = './images/bg-pink.png';
-
-
 class Background {
   constructor(game) {
     this.game = game;
@@ -11,6 +7,19 @@ class Background {
     this.height = this.game.context.canvas.height;
     this.speed = 2.5;
 
+    this.backgroundImage = new Image();
+    this.backgroundImage.src = './images/bg-pink.png';
+
+    this.firstScreenImage = new Image();
+    this.firstScreenImage.src = './images/screen1.png';
+
+    window.addEventListener('load', () => {
+      this.paintfirstScreen();
+    });
+  }
+
+  paintfirstScreen() {
+    context.drawImage(his.firstScreenImage, 0, 0, this.width, this.height);
   }
 
   paint() {
@@ -19,14 +28,14 @@ class Background {
 
     const width = $canvas.width;
     const height = $canvas.height;
-    
+
     context.clearRect(0, 0, width, height);
 
-    context.drawImage(backgroundImage, this.positionX, 0);
+    context.drawImage(this.backgroundImage, this.positionX, 0);
     if (this.speed < 0) {
-      context(backgroundImage, this.positionX - width, 0);
+      context(this.backgroundImage, this.positionX - width, 0);
     } else {
-      context.drawImage(backgroundImage, this.positionX + this.width, 0);
+      context.drawImage(this.backgroundImage, this.positionX + this.width, 0);
     }
   }
 
