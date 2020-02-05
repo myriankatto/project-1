@@ -14,7 +14,7 @@ class Character {
     this.width = 92;
     this.height = 73;
 
-    this.gravity = 1.3;
+    this.gravity = 1.1;
 
     this.counter = 0;
     this.frame_width = 114;

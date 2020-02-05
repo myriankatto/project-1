@@ -63,7 +63,7 @@ class Game {
     for (let i = 0; i < this.salmonObstacles.length; i++) {
       if (this.salmonObstacles[i].checkCollision()) {
         this.salmonObstacles.splice(i, 1);
-        this.obstacleCollisionCount += 1;
+        this.obstacleCollisionCount -= 1;
       }
       //The following code moved the obstacles
       this.salmonObstacles[i].runLogic();
@@ -80,14 +80,16 @@ class Game {
 
     //if get 5 salmons --> game over
     //if get 3 salmons --> character gets heavier
-    if (this.obstacleCollisionCount >= 5) {
+    if (this.obstacleCollisionCount <= 0) {
       this.lose();
-    } else if (this.obstacleCollisionCount >= 3) {
+    } else if (this.obstacleCollisionCount <= 3) {
       this.character.gravity = 2;
+    } else if (this.obstacleCollisionCount <= 2) {
+      this.character.gravity = 2.5;
     }
 
-    if (this.prizeCollisionCount >= 10){
-      alert('You won!')
+    if (this.prizeCollisionCount >= 10) {
+      alert('You won!');
       //CREATE WIN SCREEN
     }
 
@@ -121,7 +123,7 @@ class Game {
   lose() {
     this.isRunning = !this.isRunning;
     ////CREATE GAME OVER SCREEN
-    alert('GAME OVER')
+    alert('GAME OVER');
   }
 
   togglePause() {
@@ -134,7 +136,7 @@ class Game {
     this.background = new Background(this);
     this.scoreBoard = new Scoreboard(this);
 
-    this.obstacleCollisionCount = 0;
+    this.obstacleCollisionCount = 5;
     this.prizeCollisionCount = 0;
 
     this.timer = 0;
