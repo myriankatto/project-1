@@ -152,6 +152,7 @@ class Game {
   loop(timestamp) {
     this.runLogic(timestamp);
     this.paint();
+    this.character.storeLastPosition();
     if (this.isRunning) {
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }

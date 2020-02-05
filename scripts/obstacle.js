@@ -10,8 +10,8 @@ class Obstacle {
     this.game = game;
     this.positionX = this.game.$canvas.width;
     this.positionY = positionY;
-    this.width = 45;
-    this.height = 35;
+    this.width = 40;
+    this.height = 30;
     this.speed = 3;
 
     this.prize = prize;

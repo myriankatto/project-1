@@ -1,9 +1,8 @@
 const characterImage = new Image();
 characterImage.src = './images/wasabi-sprite.png';
 
-let counter = 0;
-let frame_width = 114;
-let frame_height = 88;
+const characterTrailImage = new Image();
+characterTrailImage.src = './images/wasabi-trail.png';
 
 class Character {
   constructor(game) {
@@ -15,6 +14,13 @@ class Character {
     this.height = 73;
 
     this.gravity = 1.3;
+
+    this.counter = 0;
+    this.frame_width = 114;
+    this.frame_height = 88;
+
+    this.motionTrailLength = 7;
+    this.positions = [];
 
     this.setKeyboardEventListeners();
   }
@@ -38,18 +44,39 @@ class Character {
   }
 
   draw() {
-    let frame = Math.floor(counter % 4);
+    for (var i = 0; i < this.positions.length; i++) {
+      this.game.context.drawImage(
+        characterTrailImage,
+        this.positionX,
+        this.positions[i].y,
+        this.width,
+        this.height
+      );
+    }
+
+    let frame = Math.floor(this.counter % 4);
     this.game.context.drawImage(
       characterImage,
-      frame * frame_width,
+      frame * this.frame_width,
       0,
-      frame_width,
-      frame_height,
+      this.frame_width,
+      this.frame_height,
       this.positionX,
       this.positionY,
       this.width,
       this.height
     );
-    counter = counter + 0.1;
+    this.counter = this.counter + 0.1;
+
+    this.storeLastPosition(this.positionY);
+  }
+  storeLastPosition() {
+    // push an item
+    this.positions.push({ y: this.positionY });
+
+    //get rid of first item
+    if (this.positions.length > this.motionTrailLength) {
+      this.positions.shift();
+    }
   }
 }
