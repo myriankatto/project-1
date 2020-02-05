@@ -26,7 +26,7 @@ class Character {
           if (this.positionY < 0) {
             this.positionY = -this.positionY;
           } else {
-            this.positionY -= 20;
+            this.positionY -= 50;
             break;
           }
       }

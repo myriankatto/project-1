@@ -78,12 +78,22 @@ class Game {
       this.heartPrizes[i].runLogic();
     }
 
+    //if get 5 salmons --> game over
+    //if get 3 salmons --> character gets heavier
     if (this.obstacleCollisionCount >= 5) {
       this.lose();
+    } else if (this.obstacleCollisionCount >= 3) {
+      this.character.gravity = 2;
     }
 
-    if (this.character.positionY > this.$canvas.height) {
-      this.lose();
+    if (this.prizeCollisionCount >= 10){
+      alert('You won!')
+      //CREATE WIN SCREEN
+    }
+
+    //if hit the bottom --> change Y direction
+    if (this.character.positionY + this.character.height / 2 > this.$canvas.height) {
+      this.character.positionY = -this.character.positionY;
     }
   }
 
@@ -110,6 +120,7 @@ class Game {
   lose() {
     this.isRunning = !this.isRunning;
     ////CREATE GAME OVER SCREEN
+    alert('GAME OVER')
   }
 
   togglePause() {
