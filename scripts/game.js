@@ -12,11 +12,50 @@ class Game {
     this.setControlBindings();
 
     this.screen = new Screen(this);
+    this.instructionsScreen = new Image();
+    this.instructionsScreen.src = './images/instructions.png';
+
+    this.wasabiScreen = new Image();
+    this.wasabiScreen.src = './images/wasabi-screen.png';
+
+    this.myAudio = document.createElement('audio');
+    this.myAudio.src = './audio/audio.wav';
+
+  }
+
+  playMusic() {
+    this.myAudio.play();
+    this.myAudio.loop = true;
+  }
+
+  pauseMusic() {
+    this.myAudio.pause();
   }
 
   setControlBindings() {
     const $buttonNewGame = document.getElementById('btn-newgame');
     const $buttonPause = document.getElementById('btn-playpause');
+    const $buttonInstructions = document.getElementById('btn-instructions');
+    const $wasabiInstructions = document.getElementById('btn-wasabi');
+    const $music = document.getElementById('btn-music');
+
+    $music.addEventListener('click', () => {
+      this.pauseMusic();
+    });
+
+    $buttonInstructions.addEventListener('click', () => {
+      this.context.drawImage(
+        this.instructionsScreen,
+        0,
+        0,
+        this.$canvas.width,
+        this.$canvas.height
+      );
+    });
+
+    $wasabiInstructions.addEventListener('click', () => {
+      this.context.drawImage(this.wasabiScreen, 0, 0, this.$canvas.width, this.$canvas.height);
+    });
 
     $buttonNewGame.addEventListener('click', () => {
       this.start();
@@ -81,7 +120,7 @@ class Game {
     }
 
     //if get 5 salmons --> game over
-    //if get 3 salmons --> character gets heavier
+    //character gets heavier when gets salmons
     if (this.obstacleCollisionCount <= 0) {
       this.lose();
     } else if (this.obstacleCollisionCount <= 4) {
@@ -126,9 +165,6 @@ class Game {
   lose() {
     this.isRunning = !this.isRunning;
     this.clear();
-    console.log('GAME OVER');
-    this.context.fillRect(100, 100, 100, 100);
-    // alert('GAME OVER');
     this.screen.paintGameOverScreen();
   }
 
@@ -140,6 +176,7 @@ class Game {
 
   togglePause() {
     this.isRunning = !this.isRunning;
+    this.pauseMusic();
     this.loop();
   }
 
@@ -147,7 +184,6 @@ class Game {
     this.character = new Character(this);
     this.background = new Background(this);
     this.scoreBoard = new Scoreboard(this);
-
     this.obstacleCollisionCount = 5;
     this.prizeCollisionCount = 0;
 
@@ -166,9 +202,10 @@ class Game {
 
   loop(timestamp) {
     this.runLogic(timestamp);
-    this.paint();
 
     if (this.isRunning) {
+      this.paint();
+      this.playMusic();
       window.requestAnimationFrame(timestamp => this.loop(timestamp));
     }
   }

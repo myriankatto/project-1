@@ -20,8 +20,8 @@ class Character {
     this.frame_width = 114;
     this.frame_height = 88;
 
-    this.motionTrailLength = 60;
-    this.positions = [];
+    // this.motionTrailLength = 60;
+    // this.positions = [];
 
     this.setKeyboardEventListeners();
   }

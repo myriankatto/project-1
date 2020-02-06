@@ -16,6 +16,8 @@ class Scoreboard {
     this.game.context.drawImage(heartScoreImage, 0, 0);
     this.game.context.drawImage(salmonScoreImage, 630, 0);
 
+
+
     const heartScore = this.game.prizeCollisionCount;
     
     this.game.context.font = '23px VT323';
@@ -31,3 +33,5 @@ class Scoreboard {
 
   }
 }
+
+
