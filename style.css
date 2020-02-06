@@ -37,10 +37,6 @@ body {
   background-color: rgb(35, 0, 58);
 }
 
-canvas {
-  background-image: url('./images/screen1.png');
-}
-
 h1 {
   position: absolute;
 

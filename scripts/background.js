@@ -9,17 +9,6 @@ class Background {
 
     this.backgroundImage = new Image();
     this.backgroundImage.src = './images/bg-pink.png';
-
-    this.firstScreenImage = new Image();
-    this.firstScreenImage.src = './images/screen1.png';
-
-    window.addEventListener('load', () => {
-      this.paintfirstScreen();
-    });
-  }
-
-  paintfirstScreen() {
-    context.drawImage(his.firstScreenImage, 0, 0, this.width, this.height);
   }
 
   paint() {

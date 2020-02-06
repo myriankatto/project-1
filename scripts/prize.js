@@ -47,13 +47,13 @@ class Prize {
       this.width,
       this.height
     );
-    heartCounter = heartCounter + 0.02;
+    heartCounter = heartCounter + 0.03;
   }
 
   checkCollision() {
     const characterPositionX = this.game.character.positionX + 10;
     const characterPositionY = this.game.character.positionY + 20;
-    const characterWidth = this.game.character.width - 20;
+    const characterWidth = this.game.character.width - 25;
     const characterHeight = this.game.character.height - 25;
 
     const prizePositionX = this.positionX;

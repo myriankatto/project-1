@@ -10,6 +10,8 @@ class Game {
     this.character.setKeyboardEventListeners();
 
     this.setControlBindings();
+
+    this.screen = new Screen(this);
   }
 
   setControlBindings() {
@@ -82,15 +84,16 @@ class Game {
     //if get 3 salmons --> character gets heavier
     if (this.obstacleCollisionCount <= 0) {
       this.lose();
-    } else if (this.obstacleCollisionCount <= 3) {
+    } else if (this.obstacleCollisionCount <= 4) {
       this.character.gravity = 2;
+    } else if (this.obstacleCollisionCount <= 3) {
+      this.character.gravity = 3;
     } else if (this.obstacleCollisionCount <= 2) {
-      this.character.gravity = 2.5;
+      this.character.gravity = 4;
     }
 
     if (this.prizeCollisionCount >= 10) {
-      alert('You won!');
-      //CREATE WIN SCREEN
+      this.win();
     }
 
     //if hit the bottom --> change Y direction
@@ -122,8 +125,17 @@ class Game {
 
   lose() {
     this.isRunning = !this.isRunning;
-    ////CREATE GAME OVER SCREEN
-    alert('GAME OVER');
+    this.clear();
+    console.log('GAME OVER');
+    this.context.fillRect(100, 100, 100, 100);
+    // alert('GAME OVER');
+    this.screen.paintGameOverScreen();
+  }
+
+  win() {
+    this.isRunning = !this.isRunning;
+    this.clear();
+    this.screen.paintYouWinScreen();
   }
 
   togglePause() {

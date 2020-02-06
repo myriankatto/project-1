@@ -55,7 +55,7 @@ class Obstacle {
   checkCollision() {
     const characterPositionX = this.game.character.positionX + 10;
     const characterPositionY = this.game.character.positionY + 20;
-    const characterWidth = this.game.character.width - 20;
+    const characterWidth = this.game.character.width - 25;
     const characterHeight = this.game.character.height - 25;
 
     const obstaclePositionX = this.positionX;
