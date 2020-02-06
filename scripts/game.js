@@ -21,6 +21,35 @@ class Game {
     this.myAudio = document.createElement('audio');
     this.myAudio.src = './audio/audio.wav';
 
+    this.prizeAudio = document.createElement('audio');
+    this.prizeAudio.src = './audio/prize.wav';
+
+    this.obstacleAudio = document.createElement('audio');
+    this.obstacleAudio.src = './audio/obstacle.wav';
+
+    this.gameOverAudio = document.createElement('audio');
+    this.gameOverAudio.src = './audio/gameover.wav';
+
+    this.winAudio = document.createElement('audio');
+    this.winAudio.src = './audio/win.wav';
+  }
+
+
+
+  playWinAudio() {
+    this.winAudio.play();
+  }
+
+  playGameOverAudio() {
+    this.gameOverAudio.play();
+  }
+
+  playPrizeAudio() {
+    this.prizeAudio.play();
+  }
+
+  playObstacleAudio() {
+    this.obstacleAudio.play();
   }
 
   playMusic() {
@@ -37,7 +66,6 @@ class Game {
     const $buttonPause = document.getElementById('btn-playpause');
     const $buttonInstructions = document.getElementById('btn-instructions');
     const $wasabiInstructions = document.getElementById('btn-wasabi');
-
 
     $buttonInstructions.addEventListener('click', () => {
       this.context.drawImage(
@@ -99,6 +127,7 @@ class Game {
     //this controls the logic of each obstacle
     for (let i = 0; i < this.salmonObstacles.length; i++) {
       if (this.salmonObstacles[i].checkCollision()) {
+        this.playObstacleAudio();
         this.salmonObstacles.splice(i, 1);
         this.obstacleCollisionCount -= 1;
       }
@@ -109,6 +138,7 @@ class Game {
     // this controls the logic of each prize
     for (let i = 0; i < this.heartPrizes.length; i++) {
       if (this.heartPrizes[i].checkCollision()) {
+        this.playPrizeAudio();
         this.heartPrizes.splice(i, 1);
         this.prizeCollisionCount += 1;
       }
@@ -160,12 +190,16 @@ class Game {
 
   lose() {
     this.isRunning = !this.isRunning;
+    this.playGameOverAudio();
+    this.pauseMusic();
     this.clear();
     this.screen.paintGameOverScreen();
   }
 
   win() {
     this.isRunning = !this.isRunning;
+    this.pauseMusic();
+    this.playWinAudio();
     this.clear();
     this.screen.paintYouWinScreen();
   }

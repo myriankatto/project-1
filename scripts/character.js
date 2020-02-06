@@ -23,7 +23,14 @@ class Character {
     // this.motionTrailLength = 60;
     // this.positions = [];
 
+    this.jumpAudio = document.createElement('audio');
+    this.jumpAudio.src = './audio/jump.wav';
+
     this.setKeyboardEventListeners();
+  }
+
+  playJumpAudio() {
+    this.jumpAudio.play();
   }
 
   setKeyboardEventListeners() {
@@ -32,6 +39,7 @@ class Character {
         case 32:
           if (this.positionY < 0) {
             this.positionY = -this.positionY;
+            this.playJumpAudio();
           } else {
             this.positionY -= 50;
             break;
@@ -64,7 +72,6 @@ class Character {
       this.height
     );
     this.counter = this.counter + 0.1;
-
   }
 
   // storeLastPosition() {
