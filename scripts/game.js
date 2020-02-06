@@ -28,7 +28,7 @@ class Game {
     this.myAudio.loop = true;
   }
 
-  pauseMusic() {
+  pauseMusic(audio) {
     this.myAudio.pause();
   }
 
@@ -37,11 +37,7 @@ class Game {
     const $buttonPause = document.getElementById('btn-playpause');
     const $buttonInstructions = document.getElementById('btn-instructions');
     const $wasabiInstructions = document.getElementById('btn-wasabi');
-    const $music = document.getElementById('btn-music');
 
-    $music.addEventListener('click', () => {
-      this.pauseMusic();
-    });
 
     $buttonInstructions.addEventListener('click', () => {
       this.context.drawImage(
