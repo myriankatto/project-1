@@ -12,7 +12,7 @@ class Prize {
     this.positionY = positionY;
     this.width = 20;
     this.height = 20;
-    this.speed = 3.3;
+    this.speed = 4;
 
     this.setRandomPosition();
   }
@@ -47,7 +47,7 @@ class Prize {
       this.width,
       this.height
     );
-    heartCounter = heartCounter + 0.03;
+    heartCounter = heartCounter + 0.5;
   }
 
   checkCollision() {

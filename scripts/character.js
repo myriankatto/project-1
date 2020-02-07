@@ -39,7 +39,7 @@ class Character {
     window.addEventListener('keydown', event => {
       switch (event.keyCode) {
         case 32:
-          if (this.positionY < 0) {
+          if (this.positionY - 20 < 0) {
             this.positionY = -this.positionY;
             this.playJumpAudio();
           } else {

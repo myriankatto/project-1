@@ -12,7 +12,7 @@ class Obstacle {
     this.positionY = positionY;
     this.width = 40;
     this.height = 30;
-    this.speed = 4;
+    this.speed = 4.5;
 
     this.prize = prize;
 
