@@ -1,6 +1,3 @@
-const characterImage = new Image();
-characterImage.src = './images/wasabi-sprite.png';
-
 // const characterTrailImage = new Image();
 // characterTrailImage.src = './images/trail.png';
 
@@ -15,11 +12,16 @@ class Character {
     this.height = 73;
 
     this.gravity = 1.1;
+    this.speed = 1;
 
     this.counter = 0;
     this.frame_width = 114;
     this.frame_height = 88;
 
+    this.characterImage = new Image();
+    this.characterImage.src = './images/wasabi-sprite.png';
+    this.characterImage2 = new Image();
+    this.characterImage2.src = './images/wasabi-voando-fat-sprite.png';
     // this.motionTrailLength = 60;
     // this.positions = [];
 
@@ -49,7 +51,7 @@ class Character {
   }
 
   runLogic() {
-    this.positionY += this.gravity;
+    this.positionY += this.gravity * this.speed;
   }
 
   draw() {
@@ -58,20 +60,35 @@ class Character {
 
     // }
     // this.storeLastPosition(this.positionX, this.positionY);
-
-    let frame = Math.floor(this.counter % 4);
-    this.game.context.drawImage(
-      characterImage,
-      frame * this.frame_width,
-      0,
-      this.frame_width,
-      this.frame_height,
-      this.positionX,
-      this.positionY,
-      this.width,
-      this.height
-    );
-    this.counter = this.counter + 0.1;
+    if (this.game.obstacleCollisionCount <= 3) {
+      let frame = Math.floor(this.counter % 4);
+      this.game.context.drawImage(
+        this.characterImage2,
+        frame * this.frame_width,
+        0,
+        this.frame_width,
+        this.frame_height,
+        this.positionX,
+        this.positionY,
+        this.width,
+        this.height
+      );
+      this.counter = this.counter + 0.1;
+    } else {
+      let frame = Math.floor(this.counter % 4);
+      this.game.context.drawImage(
+        this.characterImage,
+        frame * this.frame_width,
+        0,
+        this.frame_width,
+        this.frame_height,
+        this.positionX,
+        this.positionY,
+        this.width,
+        this.height
+      );
+      this.counter = this.counter + 0.1;
+    }
   }
 
   // storeLastPosition() {
