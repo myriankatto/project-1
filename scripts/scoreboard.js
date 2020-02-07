@@ -22,7 +22,7 @@ class Scoreboard {
     
     this.game.context.font = '23px VT323';
     this.game.context.fillStyle = 'rgb(46, 1, 58)';
-    this.game.context.fillText(heartScore + '/10', 50, 36);
+    this.game.context.fillText(heartScore + '/15', 50, 36);
   
     
     const salmonsScore = this.game.obstacleCollisionCount;

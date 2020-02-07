@@ -12,7 +12,7 @@ class Prize {
     this.positionY = positionY;
     this.width = 20;
     this.height = 20;
-    this.speed = 3;
+    this.speed = 3.3;
 
     this.setRandomPosition();
   }

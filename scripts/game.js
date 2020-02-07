@@ -113,18 +113,18 @@ class Game {
     //character gets heavier when gets salmons
     if (this.obstacleCollisionCount <= 0) {
       this.lose();
-    } else if (this.obstacleCollisionCount <= 4) {
-      this.character.gravity = 1.5;
-      this.character.speed = 1.2;
-    } else if (this.obstacleCollisionCount <= 3) {
-      this.character.gravity = 1.8;
-      this.character.speed = 1.3;
-    } else if (this.obstacleCollisionCount <= 2) {
+    } else if (this.obstacleCollisionCount === 4) {
       this.character.gravity = 2;
-      this.character.speed = 1.4;
+      this.character.speed = 1.3;
+    } else if (this.obstacleCollisionCount === 3) {
+      this.character.gravity = 2.2;
+      this.character.speed = 1.5;
+    } else if (this.obstacleCollisionCount === 2) {
+      this.character.gravity = 2.3;
+      this.character.speed = 1.8;
     }
 
-    if (this.prizeCollisionCount >= 10) {
+    if (this.prizeCollisionCount >= 15) {
       this.win();
     }
 

@@ -11,7 +11,7 @@ class Character {
     this.width = 92;
     this.height = 73;
 
-    this.gravity = 1.1;
+    this.gravity = 1.2;
     this.speed = 1;
 
     this.counter = 0;
@@ -43,7 +43,7 @@ class Character {
             this.positionY = -this.positionY;
             this.playJumpAudio();
           } else {
-            this.positionY -= 50;
+            this.positionY -= 40;
             break;
           }
       }
