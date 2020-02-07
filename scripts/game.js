@@ -186,7 +186,7 @@ class Game {
     this.playMusic();
 
     this.timer = 0;
-    this.speed = 400;
+    this.speed = 450;
     this.speedLevel = 2000;
 
     this.salmonObstacles = [];

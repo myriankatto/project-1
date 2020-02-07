@@ -43,7 +43,7 @@ class Character {
             this.positionY = -this.positionY;
             this.playJumpAudio();
           } else {
-            this.positionY -= 40;
+            this.positionY -= 50;
             break;
           }
       }
