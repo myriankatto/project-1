@@ -40,9 +40,9 @@ This project was developed with:
 ## :computer: Screenshoots <a name="screenshoots"></a>
 
 <div style="display: flex; flex-direction: 'row'; align-items: 'center';">
-   <img src="https://github.com/myriankatto/project-1/blob/master/images/3.png?raw=true" width="30px">
-   <img src="https://github.com/myriankatto/project-1/blob/master/images/2.png?raw=true" width="300px">
-   <img src="https://github.com/myriankatto/project-1/blob/master/images/4.png?raw=true" width="300px">
+   <img src="https://github.com/myriankatto/project-1/blob/master/images/3.png?raw=true" width="250px">
+   <img src="https://github.com/myriankatto/project-1/blob/master/images/2.png?raw=true" width="250px">
+   <img src="https://github.com/myriankatto/project-1/blob/master/images/4.png?raw=true" width="250px">
 
 </div>
 
