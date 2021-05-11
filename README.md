@@ -52,7 +52,7 @@ Feel free to **file a new issue** with a respective title and description on the
 
 ## :closed_book: License
 
-Released in 2020 :closed_book: License. <br>
+Released in 2020 :closed_book: License. <br>  <br> For more information, access the file [LICENSE](https://github.com/myriankatto/wasabi/blob/master/LICENSE).
 
 <div align="center">
 <sub>Built with 🖤 &nbsp; by <a href="https://github.com/myriankatto">Myrian Katto</a>.
