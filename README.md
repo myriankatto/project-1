@@ -48,7 +48,7 @@ This project was developed with:
 
 
 ## :bug: Issues <a name="bugs"></a>
-Feel free to **file a new issue** with a respective title and description on the [Wasabi](https://github.com/myriankatto/project-1/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
+Feel free to **file a new issue** with a respective title and description on the [Wasabi](https://github.com/myriankatto/wasabi/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
 
 ## :closed_book: License
 
