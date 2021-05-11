@@ -50,7 +50,7 @@ This project was developed with:
 ## :bug: Issues <a name="bugs"></a>
 Feel free to **file a new issue** with a respective title and description on the [Wasabi](https://github.com/myriankatto/project-1/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
 
-# :closed_book: License
+## :closed_book: License
 
 Released in 2020 :closed_book: License. <br>
 
